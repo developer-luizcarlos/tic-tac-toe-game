@@ -5,9 +5,10 @@ export default class GameSymbol {
     constructor(symbol) {
         this.symbol = symbol;
     }
-    getSymbol() {
-        const currentSymbol = this.symbol;
+    get getSymbol() {
+        return this.symbol;
+    }
+    switchSymbol() {
         this.symbol = this.symbol === "x" ? "y" : "x";
-        return currentSymbol;
     }
 }

@@ -8,10 +8,11 @@ export default class GameSymbol {
     this.symbol = symbol;
   }
 
-  public getSymbol(): GameSymbolType {
-    const currentSymbol = this.symbol;
-    this.symbol = this.symbol === "x" ? "y" : "x";
+  public get getSymbol(): GameSymbolType {
+    return this.symbol;
+  }
 
-    return currentSymbol;
+  public switchSymbol() {
+    this.symbol = this.symbol === "x" ? "y" : "x";
   }
 }

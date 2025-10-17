@@ -1,5 +1,9 @@
 // Imports
 import GameSymbol from "./classes/GameSymbol.ts";
+import type { GameSymbolType } from "./types/GameSymbol.types.ts";
+
+//Global variables
+let lastPlayed: GameSymbolType;
 
 // Objects Creation
 const gameSymbol = new GameSymbol("x");
@@ -51,7 +55,7 @@ function markGameBox(box: HTMLElement): void {
 
   if (!isBoxMarked) {
     box.classList.add("game__box--marked");
-    box.textContent = gameSymbol.getSymbol();
+    box.textContent = gameSymbol.getSymbol;
   }
 }
 
@@ -62,6 +66,13 @@ if (gameBoxes) {
       if (!hasWinner()) {
         const target = e.target as HTMLElement;
         markGameBox(target);
+
+        lastPlayed = gameSymbol.getSymbol;
+        gameSymbol.switchSymbol();
+
+        if (hasWinner()) {
+          console.log(lastPlayed);
+        }
       }
     });
   });

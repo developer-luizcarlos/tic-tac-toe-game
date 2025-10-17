@@ -1,5 +1,7 @@
 // Imports
 import GameSymbol from "./classes/GameSymbol.js";
+//Global variables
+let lastPlayed;
 // Objects Creation
 const gameSymbol = new GameSymbol("x");
 // DOM Elements
@@ -34,7 +36,7 @@ function markGameBox(box) {
     const isBoxMarked = box.classList.contains("game__box--marked");
     if (!isBoxMarked) {
         box.classList.add("game__box--marked");
-        box.textContent = gameSymbol.getSymbol();
+        box.textContent = gameSymbol.getSymbol;
     }
 }
 // Functions/Events Applied
@@ -44,6 +46,11 @@ if (gameBoxes) {
             if (!hasWinner()) {
                 const target = e.target;
                 markGameBox(target);
+                lastPlayed = gameSymbol.getSymbol;
+                gameSymbol.switchSymbol();
+                if (hasWinner()) {
+                    console.log(lastPlayed);
+                }
             }
         });
     });
