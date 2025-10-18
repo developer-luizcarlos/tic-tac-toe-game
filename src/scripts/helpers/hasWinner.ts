@@ -1,22 +1,14 @@
+import getDiagonal from "./getDiagonal.ts";
+import getRow from "./getRow.ts";
+import hasAllSameSymbol from "./hasAllSameSymbol.ts";
+
 export default function hasWinner(gameBoxes: NodeListOf<Element>): boolean {
-  const firstRow = Array.from(gameBoxes).filter((_, i) => i >= 0 && i <= 2);
-  const secondRow = Array.from(gameBoxes).filter((_, i) => i >= 3 && i <= 5);
-  const thirdRow = Array.from(gameBoxes).filter((_, i) => i >= 6 && i <= 8);
+  const firstRow = getRow(gameBoxes, 0, 2);
+  const secondRow = getRow(gameBoxes, 3, 5);
+  const thirdRow = getRow(gameBoxes, 6, 8);
 
-  const firstDiagonal = Array.from(gameBoxes).filter(
-    (_, i) => i === 2 || i === 4 || i === 6
-  );
-  const secondDiagonal = Array.from(gameBoxes).filter(
-    (_, i) => i === 0 || i === 4 || i === 8
-  );
-
-  const hasAllSameSymbol = (row: Element[]) => {
-    return row.every((e) => {
-      return (
-        e.textContent === row[0].textContent && row[0].textContent.trim() !== ""
-      );
-    });
-  };
+  const firstDiagonal = getDiagonal(gameBoxes, [2, 4, 6]);
+  const secondDiagonal = getDiagonal(gameBoxes, [0, 4, 8]);
 
   const hasFirstRowSameSymbol = hasAllSameSymbol(firstRow);
   const hasSecondRowSameSymbol = hasAllSameSymbol(secondRow);
