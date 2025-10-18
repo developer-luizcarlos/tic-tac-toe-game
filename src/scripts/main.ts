@@ -18,6 +18,21 @@ function markGameBox(box: HTMLElement): void {
   box.textContent = gameSymbol.getSymbol;
 }
 
+function machinePlay() {
+  const unmarkedBoxes = Array.from(gameBoxes).filter((b) => {
+    return !b.classList.contains("game__box--marked");
+  });
+
+  if (!unmarkedBoxes.length) {
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
+  const randomBox = unmarkedBoxes[randomIndex] as HTMLElement;
+
+  handleClick(randomBox);
+}
+
 function handleClick(box: HTMLElement) {
   if (!hasWinner(gameBoxes)) {
     if (!isGameBoxMarked(box)) {
@@ -37,6 +52,7 @@ if (gameBoxes) {
   gameBoxes.forEach((box) => {
     box.addEventListener("click", (e) => {
       handleClick(e.target as HTMLElement);
+      machinePlay();
     });
   });
 }

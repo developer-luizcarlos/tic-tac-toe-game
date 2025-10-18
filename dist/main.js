@@ -12,6 +12,17 @@ function markGameBox(box) {
     box.classList.add("game__box--marked");
     box.textContent = gameSymbol.getSymbol;
 }
+function machinePlay() {
+    const unmarkedBoxes = Array.from(gameBoxes).filter((b) => {
+        return !b.classList.contains("game__box--marked");
+    });
+    if (!unmarkedBoxes.length) {
+        return;
+    }
+    const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
+    const randomBox = unmarkedBoxes[randomIndex];
+    handleClick(randomBox);
+}
 function handleClick(box) {
     if (!hasWinner(gameBoxes)) {
         if (!isGameBoxMarked(box)) {
@@ -29,6 +40,7 @@ if (gameBoxes) {
     gameBoxes.forEach((box) => {
         box.addEventListener("click", (e) => {
             handleClick(e.target);
+            machinePlay();
         });
     });
 }
