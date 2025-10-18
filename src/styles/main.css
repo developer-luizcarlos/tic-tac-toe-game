@@ -1,3 +1,5 @@
+@import url(variables.css);
+
 *,
 *::before,
 *::after {
@@ -13,6 +15,7 @@ html {
 }
 
 body {
+  background-color: var(--bg-body);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,15 +33,16 @@ html {
   grid-template-rows: repeat(3, 1fr);
   gap: 10px;
   min-height: 450px;
-  height: 80vh;
+  height: 80%;
   min-width: 400px;
-  width: 60vw;
+  width: 60%;
 }
 
 .game__box {
-  border: 1px solid #0d0d0d;
+  background-color: var(--bg-game-box);
   border-radius: 10px;
   cursor: pointer;
+  color: var(--color-symbol-player);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,4 +50,12 @@ html {
   text-transform: uppercase;
   min-height: 100%;
   min-width: 100%;
+}
+
+.game__box--player-turn {
+  color: var(--color-symbol-player);
+}
+
+.game__box--ai-turn {
+  color: var(--color-symbol-ai);
 }
