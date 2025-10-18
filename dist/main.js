@@ -8,8 +8,9 @@ const gameSymbol = new GameSymbol("x");
 // DOM Elements
 const gameBoxes = document.querySelectorAll(".game__box");
 // Functions Declaration
-function markGameBox(box) {
-    box.classList.add("game__box--marked");
+function markGameBox(box, turn) {
+    const turnClassName = turn === "player" ? "game__box--player-turn" : "game__box--machine-turn";
+    box.classList.add("game__box--marked", turnClassName);
     box.textContent = gameSymbol.getSymbol;
 }
 function machinePlay() {
@@ -21,13 +22,13 @@ function machinePlay() {
     }
     const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
     const randomBox = unmarkedBoxes[randomIndex];
-    play(randomBox);
+    play(randomBox, "machine");
 }
-function play(box) {
+function play(box, turn) {
     if (!hasWinner(gameBoxes)) {
         if (!isGameBoxMarked(box)) {
             lastPlayed = gameSymbol.getSymbol;
-            markGameBox(box);
+            markGameBox(box, turn);
             gameSymbol.switchSymbol();
         }
         if (hasWinner(gameBoxes)) {
@@ -39,7 +40,7 @@ function play(box) {
 if (gameBoxes) {
     gameBoxes.forEach((box) => {
         box.addEventListener("click", (e) => {
-            play(e.target);
+            play(e.target, "player");
             machinePlay();
         });
     });
