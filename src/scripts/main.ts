@@ -1,6 +1,6 @@
 // Imports
 import GameSymbol from "./classes/GameSymbol.ts";
-import getIndexOfPossibleMachineWin from "./helpers/getIndexOfPossibleMachineWin.ts";
+import getIndexOfPossibleWin from "./helpers/getIndexOfPossibleWin.ts";
 import { hasWinner, isGameBoxMarked } from "./helpers/helpers.ts";
 import type { GameSymbolType } from "./types/GameSymbol.types.ts";
 import type { TurnType } from "./types/Turn.types.ts";
@@ -32,11 +32,21 @@ function machinePlay() {
   }
 
   const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
+  const possibleMachineWinIndex = getIndexOfPossibleWin(gameBoxes, "machine");
+  const possiblePlayerWinIndex = getIndexOfPossibleWin(gameBoxes, "player");
 
-  const index =
-    getIndexOfPossibleMachineWin(gameBoxes) !== -1
-      ? getIndexOfPossibleMachineWin(gameBoxes)
-      : randomIndex;
+  let index: number;
+
+  if (
+    (possibleMachineWinIndex !== -1 && possiblePlayerWinIndex !== -1) ||
+    possibleMachineWinIndex !== -1
+  ) {
+    index = possibleMachineWinIndex;
+  } else if (possibleMachineWinIndex === -1 && possiblePlayerWinIndex !== -1) {
+    index = possiblePlayerWinIndex;
+  } else {
+    index = randomIndex;
+  }
 
   const randomBox = unmarkedBoxes[index] as HTMLElement;
 

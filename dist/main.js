@@ -1,6 +1,6 @@
 // Imports
 import GameSymbol from "./classes/GameSymbol.js";
-import getIndexOfPossibleMachineWin from "./helpers/getIndexOfPossibleMachineWin.js";
+import getIndexOfPossibleWin from "./helpers/getIndexOfPossibleWin.js";
 import { hasWinner, isGameBoxMarked } from "./helpers/helpers.js";
 //Global variables
 let lastPlayed;
@@ -22,9 +22,19 @@ function machinePlay() {
         return;
     }
     const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
-    const index = getIndexOfPossibleMachineWin(gameBoxes) !== -1
-        ? getIndexOfPossibleMachineWin(gameBoxes)
-        : randomIndex;
+    const possibleMachineWinIndex = getIndexOfPossibleWin(gameBoxes, "machine");
+    const possiblePlayerWinIndex = getIndexOfPossibleWin(gameBoxes, "player");
+    let index;
+    if ((possibleMachineWinIndex !== -1 && possiblePlayerWinIndex !== -1) ||
+        possibleMachineWinIndex !== -1) {
+        index = possibleMachineWinIndex;
+    }
+    else if (possibleMachineWinIndex === -1 && possiblePlayerWinIndex !== -1) {
+        index = possiblePlayerWinIndex;
+    }
+    else {
+        index = randomIndex;
+    }
     const randomBox = unmarkedBoxes[index];
     play(randomBox, "machine");
 }

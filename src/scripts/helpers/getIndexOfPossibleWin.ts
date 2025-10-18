@@ -1,9 +1,12 @@
+import type { TurnType } from "../types/Turn.types.ts";
 import getColumn from "./getColumn.ts";
 import getDiagonal from "./getDiagonal.ts";
+import getPlayedSegments from "./getPlayedSegments.ts";
 import getRow from "./getRow.ts";
 
-export default function getIndexOfPossibleMachineWin(
-  gameBoxes: NodeListOf<Element>
+export default function getIndexOfPossibleWin(
+  gameBoxes: NodeListOf<Element>,
+  turn: TurnType
 ) {
   const firstRow = getRow(gameBoxes, 0, 2);
   const secondRow = getRow(gameBoxes, 3, 5);
@@ -16,31 +19,28 @@ export default function getIndexOfPossibleMachineWin(
   const firstDiagonal = getDiagonal(gameBoxes, [2, 4, 6]);
   const secondDiagonal = getDiagonal(gameBoxes, [0, 4, 8]);
 
-  const baz = (collection: Element[]): Element[] => {
-    return collection.filter((el) => {
-      return (
-        el.classList.contains("game__box--machine-turn") &&
-        !el.classList.contains("game__box--player-turn")
-      );
-    });
-  };
-
   const segments: Element[][] = [];
 
-  const foo = (c1: Element[], c2: Element[]): void => {
+  const addPotencialWinSegments = (c1: Element[], c2: Element[]): void => {
     if (c1.length === 2) {
       segments.push(c2);
     }
   };
 
-  foo(baz(firstRow), firstRow);
-  foo(baz(secondRow), secondRow);
-  foo(baz(thirdRow), thirdRow);
-  foo(baz(firstColumn), firstColumn);
-  foo(baz(secondColumn), secondColumn);
-  foo(baz(thirdColumn), thirdColumn);
-  foo(baz(firstDiagonal), firstDiagonal);
-  foo(baz(secondDiagonal), secondDiagonal);
+  addPotencialWinSegments(getPlayedSegments(firstRow, turn), firstRow);
+  addPotencialWinSegments(getPlayedSegments(secondRow, turn), secondRow);
+  addPotencialWinSegments(getPlayedSegments(thirdRow, turn), thirdRow);
+  addPotencialWinSegments(getPlayedSegments(firstColumn, turn), firstColumn);
+  addPotencialWinSegments(getPlayedSegments(secondColumn, turn), secondColumn);
+  addPotencialWinSegments(getPlayedSegments(thirdColumn, turn), thirdColumn);
+  addPotencialWinSegments(
+    getPlayedSegments(firstDiagonal, turn),
+    firstDiagonal
+  );
+  addPotencialWinSegments(
+    getPlayedSegments(secondDiagonal, turn),
+    secondDiagonal
+  );
 
   const findIndex = (item: Element): number => {
     const unmarkedBoxes = Array.from(gameBoxes).filter(
