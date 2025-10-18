@@ -56,6 +56,6 @@ html {
   color: var(--color-symbol-player);
 }
 
-.game__box--ai-turn {
+.game__box--machine-turn {
   color: var(--color-symbol-ai);
 }
