@@ -21,9 +21,9 @@ function machinePlay() {
     }
     const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
     const randomBox = unmarkedBoxes[randomIndex];
-    handleClick(randomBox);
+    play(randomBox);
 }
-function handleClick(box) {
+function play(box) {
     if (!hasWinner(gameBoxes)) {
         if (!isGameBoxMarked(box)) {
             lastPlayed = gameSymbol.getSymbol;
@@ -39,7 +39,7 @@ function handleClick(box) {
 if (gameBoxes) {
     gameBoxes.forEach((box) => {
         box.addEventListener("click", (e) => {
-            handleClick(e.target);
+            play(e.target);
             machinePlay();
         });
     });

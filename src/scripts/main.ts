@@ -30,10 +30,10 @@ function machinePlay() {
   const randomIndex = Math.floor(Math.random() * unmarkedBoxes.length);
   const randomBox = unmarkedBoxes[randomIndex] as HTMLElement;
 
-  handleClick(randomBox);
+  play(randomBox);
 }
 
-function handleClick(box: HTMLElement) {
+function play(box: HTMLElement) {
   if (!hasWinner(gameBoxes)) {
     if (!isGameBoxMarked(box)) {
       lastPlayed = gameSymbol.getSymbol;
@@ -51,7 +51,7 @@ function handleClick(box: HTMLElement) {
 if (gameBoxes) {
   gameBoxes.forEach((box) => {
     box.addEventListener("click", (e) => {
-      handleClick(e.target as HTMLElement);
+      play(e.target as HTMLElement);
       machinePlay();
     });
   });
