@@ -41,7 +41,7 @@ if (gameBoxes) {
     gameBoxes.forEach((box) => {
         box.addEventListener("click", (e) => {
             play(e.target, "player");
-            // machinePlay();
+            machinePlay();
         });
     });
 }

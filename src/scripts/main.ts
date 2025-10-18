@@ -55,7 +55,7 @@ if (gameBoxes) {
   gameBoxes.forEach((box) => {
     box.addEventListener("click", (e) => {
       play(e.target as HTMLElement, "player");
-      // machinePlay();
+      machinePlay();
     });
   });
 }
