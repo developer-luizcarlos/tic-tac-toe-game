@@ -1,4 +1,4 @@
-import type { TurnType } from "../types/Turn.types.ts";
+import type { TurnType } from "../types/turn.types.ts";
 
 export default function getPlayedSegments(
   collection: Element[],

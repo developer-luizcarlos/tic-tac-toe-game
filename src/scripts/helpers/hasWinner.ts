@@ -1,7 +1,4 @@
-import getColumn from "./getColumn.ts";
-import getDiagonal from "./getDiagonal.ts";
-import getRow from "./getRow.ts";
-import isThereAWinCase from "./isThereAWinCase.ts";
+import { getColumn, getDiagonal, getRow, isThereAWinCase } from "./helpers.ts";
 
 export default function hasWinner(gameBoxes: NodeListOf<Element>): boolean {
   const firstRow = getRow(gameBoxes, 0, 2);

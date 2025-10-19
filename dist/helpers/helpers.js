@@ -1,3 +1,10 @@
+import getColumn from "./getColumn.js";
+import getDiagonal from "./getDiagonal.js";
+import getIndexOfPossibleWin from "./getIndexOfPossibleWin.js";
+import getPlayedSegments from "./getPlayedSegments.js";
+import getRow from "./getRow.js";
+import hasAllSameSymbol from "./hasAllSameSymbol.js";
 import hasWinner from "./hasWinner.js";
 import isGameBoxMarked from "./isGameBoxMarked.js";
-export { hasWinner, isGameBoxMarked };
+import isThereAWinCase from "./isThereAWinCase.js";
+export { getColumn, getDiagonal, getIndexOfPossibleWin, getPlayedSegments, getRow, hasAllSameSymbol, hasWinner, isGameBoxMarked, isThereAWinCase, };

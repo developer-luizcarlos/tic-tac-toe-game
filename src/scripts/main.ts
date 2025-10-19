@@ -2,8 +2,8 @@
 import GameSymbol from "./classes/GameSymbol.ts";
 import getIndexOfPossibleWin from "./helpers/getIndexOfPossibleWin.ts";
 import { hasWinner, isGameBoxMarked } from "./helpers/helpers.ts";
-import type { GameSymbolType } from "./types/GameSymbol.types.ts";
-import type { TurnType } from "./types/Turn.types.ts";
+import type { GameSymbolType } from "./types/gameSymbol.types.ts";
+import type { TurnType } from "./types/turn.types.ts";
 
 //Global variables
 let lastPlayed: GameSymbolType;

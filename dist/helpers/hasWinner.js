@@ -1,7 +1,4 @@
-import getColumn from "./getColumn.js";
-import getDiagonal from "./getDiagonal.js";
-import getRow from "./getRow.js";
-import isThereAWinCase from "./isThereAWinCase.js";
+import { getColumn, getDiagonal, getRow, isThereAWinCase } from "./helpers.js";
 export default function hasWinner(gameBoxes) {
     const firstRow = getRow(gameBoxes, 0, 2);
     const secondRow = getRow(gameBoxes, 3, 5);

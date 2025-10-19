@@ -1,4 +1,4 @@
-import hasAllSameSymbol from "./hasAllSameSymbol.ts";
+import { hasAllSameSymbol } from "./helpers.ts";
 
 export default function isThereAWinCase(segments: Element[][]): boolean {
   return segments.some((item) => {

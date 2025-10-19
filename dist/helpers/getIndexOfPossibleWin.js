@@ -1,7 +1,4 @@
-import getColumn from "./getColumn.js";
-import getDiagonal from "./getDiagonal.js";
-import getPlayedSegments from "./getPlayedSegments.js";
-import getRow from "./getRow.js";
+import { getColumn, getDiagonal, getPlayedSegments, getRow, } from "./helpers.js";
 export default function getIndexOfPossibleWin(gameBoxes, turn) {
     const firstRow = getRow(gameBoxes, 0, 2);
     const secondRow = getRow(gameBoxes, 3, 5);

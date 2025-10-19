@@ -1,5 +1,5 @@
 // Imports
-import {} from "../types/GameSymbol.types.js";
+import {} from "../types/gameSymbol.types.js";
 export default class GameSymbol {
     symbol;
     constructor(symbol) {

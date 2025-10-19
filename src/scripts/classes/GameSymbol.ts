@@ -1,5 +1,5 @@
 // Imports
-import { type GameSymbolType } from "../types/GameSymbol.types.ts";
+import { type GameSymbolType } from "../types/gameSymbol.types.ts";
 
 export default class GameSymbol {
   private symbol: GameSymbolType;

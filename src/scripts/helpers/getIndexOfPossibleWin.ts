@@ -1,8 +1,10 @@
-import type { TurnType } from "../types/Turn.types.ts";
-import getColumn from "./getColumn.ts";
-import getDiagonal from "./getDiagonal.ts";
-import getPlayedSegments from "./getPlayedSegments.ts";
-import getRow from "./getRow.ts";
+import type { TurnType } from "../types/turn.types.ts";
+import {
+  getColumn,
+  getDiagonal,
+  getPlayedSegments,
+  getRow,
+} from "./helpers.ts";
 
 export default function getIndexOfPossibleWin(
   gameBoxes: NodeListOf<Element>,
